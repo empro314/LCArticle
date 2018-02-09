@@ -1,0 +1,25 @@
+Zaladuj biblioteki i wczytaj dane
+```{r}
+library(Hmisc)
+fullResults <- read.csv(file = "fullResults.csv", header = TRUE )
+View(fullResults)
+```
+
+Utworz liste danych do korelacji i wykonaj korelacje po wszystkich mozliwych podzbiorach
+```{r}
+indexes <- combn(c(2:9, 11, 14), 2)
+#print(indexes)
+
+for(ind in 1:45)
+{
+  print(rcorr(as.matrix(fullResults[indexes[1, ind]]), as.matrix(fullResults[indexes[2, ind]]), type = 'spearman'))
+ cat("\n\n\n\n\n")
+}
+```
+korelacje po usunieciu odstajcych -> NIE TRZEBA
+
+test 17a i 17c podzielone na podgrupy
+helper <- subset
+```{r}
+```
+
